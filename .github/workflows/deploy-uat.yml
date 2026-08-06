@@ -1,0 +1,38 @@
+name: Deploy UAT Landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: uat-landing
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.UAT_SSH_KEY }}" > ~/.ssh/uat_key
+          chmod 600 ~/.ssh/uat_key
+          ssh-keyscan -p "${{ secrets.UAT_SSH_PORT || 22 }}" -H "${{ secrets.UAT_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Rsync to uat.kincore.com
+        env:
+          HOST: ${{ secrets.UAT_HOST }}
+          USER: ${{ secrets.UAT_USER }}
+          PORT: ${{ secrets.UAT_SSH_PORT || 22 }}
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/uat_key -p ${PORT} -o IdentitiesOnly=yes" \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'README.md' \
+            --exclude 'deploy/' \
+            --exclude '.gitignore' \
+            ./ "${USER}@${HOST}:/var/www/uat.kincore.com/"

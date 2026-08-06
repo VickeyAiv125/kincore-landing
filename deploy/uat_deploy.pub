@@ -1,0 +1,9 @@
+# Public half of the GitHub Actions → UAT deploy key.
+# On the VPS (once), as root:
+#
+#   mkdir -p /root/.ssh && chmod 700 /root/.ssh
+#   echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDOvXLI2VDgI6yg16OX/P5mhIzjKv3xbt1GehGK/Tvv7 github-actions-kincore-uat' >> /root/.ssh/authorized_keys
+#   chmod 600 /root/.ssh/authorized_keys
+#
+# Private key stays on your Mac (~/.ssh/id_ed25519_kincore_uat) and as GitHub secret UAT_SSH_KEY.
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDOvXLI2VDgI6yg16OX/P5mhIzjKv3xbt1GehGK/Tvv7 github-actions-kincore-uat
