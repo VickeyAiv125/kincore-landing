@@ -3,43 +3,240 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kincore — Coming Soon</title>
-    <meta name="description" content="Kincore family tree platform. This UAT landing page is under construction." />
+    <title>Kincore — Your Family Tree, Living Together</title>
+    <meta
+      name="description"
+      content="Kincore helps extended families build one shared clan tree: create a family space, grow parents and children from the root, claim your place, and preserve lineage."
+    />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="atmosphere" aria-hidden="true"></div>
-    <div class="glow glow-a" aria-hidden="true"></div>
-    <div class="glow glow-b" aria-hidden="true"></div>
+    <div class="sky" aria-hidden="true"></div>
 
-    <main class="stage">
-      <header class="brand">
-        <img class="logo" src="/favicon.png" width="72" height="72" alt="Kincore" />
-        <p class="brand-name">Kincore</p>
-      </header>
+    <header class="top">
+      <a class="brand" href="#top">
+        <img src="/favicon.png" width="40" height="40" alt="" />
+        <span>Kincore</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#tree">The tree</a>
+        <a href="#grow">Grow</a>
+        <a href="#join">Join</a>
+        <a href="#how">How it works</a>
+      </nav>
+      <a class="btn ghost" href="https://uat.admin.kincore.com">Admin</a>
+    </header>
 
+    <main id="top">
       <section class="hero">
-        <p class="eyebrow">UAT · Landing</p>
-        <h1>Page under construction</h1>
-        <p class="lede">
-          We’re preparing the public home for Kincore. Family stories, trees, and
-          community tools are on the way.
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="https://uat.admin.kincore.com">Open Admin UAT</a>
-          <span class="chip">uat.kincore.com</span>
+        <div class="hero-copy">
+          <p class="brand-mark">Kincore</p>
+          <h1>One family tree for the whole clan</h1>
+          <p class="lede">
+            Create a family space, start from the admin root, and grow parents,
+            children, and relatives into one living lineage graph.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://uat.admin.kincore.com">Open family admin</a>
+            <a class="btn soft" href="#how">See how it works</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="tree-stage">
+            <div class="node root pulse-ring">
+              <span>You</span>
+              <small>Root</small>
+            </div>
+            <div class="branch-line up"></div>
+            <div class="node parent fade-in delay-1">
+              <span>Parent</span>
+            </div>
+            <div class="branch-line down"></div>
+            <div class="node child fade-in delay-2">
+              <span>Child</span>
+            </div>
+            <div class="branch-line side"></div>
+            <div class="node spouse fade-in delay-3">
+              <span>Spouse</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer class="foot">
-        <span class="pulse" aria-hidden="true"></span>
-        Building quietly. Check back soon.
-      </footer>
+      <section class="section" id="tree">
+        <p class="eyebrow">Family space</p>
+        <h2>Your clan starts as a space — then a person</h2>
+        <p class="section-lede">
+          In Kincore, a family is not just an account. Creating a family space
+          creates the container and the first tree node at the same time.
+        </p>
+        <div class="split">
+          <article class="flow-block">
+            <h3>Family space</h3>
+            <p>
+              A private clan home with a name, invite code, membership roles,
+              and storage for the people who belong to this lineage.
+            </p>
+            <ul>
+              <li>Owner and family-admin roles</li>
+              <li>Invite by link or code</li>
+              <li>Branches for North / South / regional lines</li>
+            </ul>
+          </article>
+          <article class="flow-block accent">
+            <h3>Root person</h3>
+            <p>
+              The creator becomes the root ancestor on the tree. That
+              <code>person_id</code> is the starting point for every parent,
+              child, and spouse you add next.
+            </p>
+            <ul>
+              <li>Claimed by the logged-in admin</li>
+              <li>Used as <code>target_person_id</code></li>
+              <li>Relations grow outward from here</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section tint" id="grow">
+        <p class="eyebrow">Build the graph</p>
+        <h2>Add parents, children, and relatives</h2>
+        <p class="section-lede">
+          Tree growth is intentional: every new person attaches to someone who
+          already exists. The admin begins the chain; relatives hang off that node.
+        </p>
+        <div class="feature-strip">
+          <div>
+            <h3>Add child</h3>
+            <p>
+              Attach a son or daughter to an existing person. Creates the person
+              and a parent relation in one step.
+            </p>
+          </div>
+          <div>
+            <h3>Add parent</h3>
+            <p>
+              Grow upward. New parents link to the selected person so older
+              generations can be restored over time.
+            </p>
+          </div>
+          <div>
+            <h3>Add member / spouse</h3>
+            <p>
+              Connect spouses and other relatives with typed relationships so
+              the clan graph stays readable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="join">
+        <p class="eyebrow">Belonging</p>
+        <h2>Find yourself on an existing tree</h2>
+        <p class="section-lede">
+          Not everyone creates a space. Many people discover they were already
+          added by family — then claim their place.
+        </p>
+        <ol class="steps">
+          <li>
+            <strong>Search</strong>
+            <span>Look up first name, last name, gender, or date of birth.</span>
+          </li>
+          <li>
+            <strong>Match</strong>
+            <span>See unclaimed people in families that allow external search.</span>
+          </li>
+          <li>
+            <strong>Request & claim</strong>
+            <span>Ask to join the space and claim the person node as yours.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section tint" id="preserve">
+        <p class="eyebrow">Beyond names</p>
+        <h2>Keep lineage alive around the tree</h2>
+        <p class="section-lede">
+          The tree is the spine. Around it, families preserve context that
+          genealogy alone cannot hold.
+        </p>
+        <div class="preserve-grid">
+          <div>
+            <h3>Branches</h3>
+            <p>Split large clans into regional or household branches with their own admins.</p>
+          </div>
+          <div>
+            <h3>History & media</h3>
+            <p>Store photos, documents, and family history next to the people they belong to.</p>
+          </div>
+          <div>
+            <h3>Events</h3>
+            <p>Plan reunions and gatherings with the same membership that lives on the tree.</p>
+          </div>
+          <div>
+            <h3>Governance</h3>
+            <p>Owners control who can edit lineage, with approval modes for careful clans.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <p class="eyebrow">Path</p>
+        <h2>How families use Kincore today</h2>
+        <div class="path">
+          <div class="path-step">
+            <span class="num">1</span>
+            <h3>Sign in</h3>
+            <p>Email, Google, or KCC — then open or create a family space.</p>
+          </div>
+          <div class="path-step">
+            <span class="num">2</span>
+            <h3>Root the tree</h3>
+            <p>Space creation returns the family id and your root person id.</p>
+          </div>
+          <div class="path-step">
+            <span class="num">3</span>
+            <h3>Grow relations</h3>
+            <p>Add child, parent, and spouse using that person as the target.</p>
+          </div>
+          <div class="path-step">
+            <span class="num">4</span>
+            <h3>Invite the clan</h3>
+            <p>Members find themselves, claim nodes, and keep editing together.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <p class="brand-mark light">Kincore</p>
+        <h2>Start with one person. End with a clan.</h2>
+        <p>
+          UAT is live for family admins building real trees. Open the admin
+          portal to create a space and grow your first generation.
+        </p>
+        <div class="cta-row center">
+          <a class="btn primary" href="https://uat.admin.kincore.com">Open Admin UAT</a>
+          <a class="btn soft" href="https://uat.api.kincore.com/health">API status</a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-foot">
+      <div>
+        <img src="/favicon.png" width="28" height="28" alt="" />
+        <strong>Kincore</strong>
+      </div>
+      <p>Family tree infrastructure for extended clans.</p>
+      <p class="fine">uat.kincore.com · UAT environment</p>
+    </footer>
   </body>
 </html>
