@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join family — Kincore</title>
-    <meta name="description" content="Open this invite in the Kincore app to join a family space." />
+    <meta name="description" content="Join a Kincore family with your details — no prior login required." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,26 +28,54 @@
       <section class="join-card">
         <p class="eyebrow">Family invite</p>
         <h1 id="join-title">Join this family</h1>
-        <p class="lede" id="join-lede">
-          Open the Kincore app to accept this invite and appear on the family tree.
-        </p>
+        <p class="lede" id="join-lede">Enter your details below. No separate login step.</p>
 
         <p class="code-label">Invite code</p>
         <p class="code-value" id="invite-code">—</p>
-
-        <div class="cta-row">
-          <a class="btn primary" id="open-app" href="#">Open in Kincore</a>
-          <button type="button" class="btn soft" id="copy-code">Copy code</button>
+        <div id="qr-wrap" class="qr-wrap" hidden>
+          <img id="qr-img" alt="Invite QR code" width="180" height="180" />
         </div>
 
-        <p class="fine" id="status-line">
-          Don’t have the app? Install Kincore, sign in, then use <strong>Join via link</strong> and paste this code.
-        </p>
+        <form id="join-form" class="join-form" hidden>
+          <label>
+            First name
+            <input name="first_name" required autocomplete="given-name" />
+          </label>
+          <label>
+            Last name
+            <input name="last_name" required autocomplete="family-name" />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" required autocomplete="email" />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" required minlength="6" autocomplete="new-password" />
+          </label>
+          <label>
+            Gender (optional)
+            <select name="gender">
+              <option value="">—</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <button type="submit" class="btn primary" id="submit-btn">Join family</button>
+          <p class="fine" id="form-status" role="status"></p>
+        </form>
+
+        <div class="cta-row" id="fallback-actions">
+          <a class="btn soft" id="open-app" href="#">Open in Kincore app</a>
+          <button type="button" class="btn soft" id="copy-code">Copy code</button>
+        </div>
       </section>
     </main>
 
     <script>
       (function () {
+        var API = "https://uat.api.kincore.com";
         var params = new URLSearchParams(window.location.search);
         var pathMatch = window.location.pathname.match(/\/join\/([^/?#]+)/i);
         var code = (params.get("code") || (pathMatch && pathMatch[1]) || "")
@@ -59,46 +87,105 @@
         var copyBtn = document.getElementById("copy-code");
         var title = document.getElementById("join-title");
         var lede = document.getElementById("join-lede");
+        var form = document.getElementById("join-form");
+        var statusEl = document.getElementById("form-status");
+        var qrWrap = document.getElementById("qr-wrap");
+        var qrImg = document.getElementById("qr-img");
 
-        if (!code || code === "JOIN.HTML") {
+        if (!code) {
           codeEl.textContent = "No code in this link";
           title.textContent = "Invite link incomplete";
           lede.textContent = "Ask your family admin to resend a full invite link or QR code.";
-          openApp.setAttribute("aria-disabled", "true");
           openApp.href = "/";
           openApp.textContent = "Back to Kincore";
           return;
         }
 
         codeEl.textContent = code;
-        var deep = "kincore://join/" + encodeURIComponent(code);
-        openApp.href = deep;
+        openApp.href = "kincore://join/" + encodeURIComponent(code);
 
-        // Attempt auto-open on mobile; user can still tap the button.
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (isMobile) {
-          window.setTimeout(function () {
-            window.location.href = deep;
-          }, 400);
-        }
+        fetch(API + "/api/families/join-info?code=" + encodeURIComponent(code))
+          .then(function (r) {
+            return r.json().then(function (d) {
+              return { ok: r.ok, d: d };
+            });
+          })
+          .then(function (res) {
+            if (!res.ok) {
+              title.textContent = "Invite not found";
+              lede.textContent = res.d.error || "This invite code is invalid or expired.";
+              return;
+            }
+            if (res.d.family_name) {
+              title.textContent = "Join " + res.d.family_name;
+            }
+            if (res.d.qr_code_data_url) {
+              qrImg.src = res.d.qr_code_data_url;
+              qrWrap.hidden = false;
+            }
+            form.hidden = false;
+          })
+          .catch(function () {
+            form.hidden = false;
+            lede.textContent = "Enter your details to join.";
+          });
 
         copyBtn.addEventListener("click", function () {
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(code).then(function () {
               copyBtn.textContent = "Copied";
-              window.setTimeout(function () {
+              setTimeout(function () {
                 copyBtn.textContent = "Copy code";
               }, 1600);
             });
-          } else {
-            var ta = document.createElement("textarea");
-            ta.value = code;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand("copy");
-            document.body.removeChild(ta);
-            copyBtn.textContent = "Copied";
           }
+        });
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          statusEl.textContent = "Joining…";
+          statusEl.style.color = "";
+          var fd = new FormData(form);
+          var body = {
+            link: code,
+            first_name: fd.get("first_name"),
+            last_name: fd.get("last_name"),
+            email: fd.get("email"),
+            password: fd.get("password"),
+            gender: fd.get("gender") || undefined,
+          };
+          fetch(API + "/api/families/join", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          })
+            .then(function (r) {
+              return r.json().then(function (d) {
+                return { ok: r.ok, status: r.status, d: d };
+              });
+            })
+            .then(function (res) {
+              if (!res.ok) {
+                statusEl.style.color = "#b42318";
+                statusEl.textContent = res.d.error || "Could not join";
+                return;
+              }
+              statusEl.style.color = "#2f6b4f";
+              statusEl.textContent =
+                (res.d.message || "Joined") +
+                ". You can open the Kincore app and sign in with this email.";
+              try {
+                localStorage.setItem("kincore_join_token", res.d.token || "");
+                localStorage.setItem("kincore_join_space", res.d.space_id || "");
+              } catch (_) {}
+              form.querySelectorAll("input, select, button").forEach(function (el) {
+                el.disabled = true;
+              });
+            })
+            .catch(function (err) {
+              statusEl.style.color = "#b42318";
+              statusEl.textContent = err.message || "Network error";
+            });
         });
       })();
     </script>
