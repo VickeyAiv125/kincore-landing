@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join family — Kincore</title>
+    <meta name="description" content="Open this invite in the Kincore app to join a family space." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/join.css" />
+  </head>
+  <body class="join-page">
+    <div class="sky" aria-hidden="true"></div>
+
+    <main class="join-stage">
+      <a class="brand" href="/">
+        <img src="/favicon.png" width="48" height="48" alt="" />
+        <span>Kincore</span>
+      </a>
+
+      <section class="join-card">
+        <p class="eyebrow">Family invite</p>
+        <h1 id="join-title">Join this family</h1>
+        <p class="lede" id="join-lede">
+          Open the Kincore app to accept this invite and appear on the family tree.
+        </p>
+
+        <p class="code-label">Invite code</p>
+        <p class="code-value" id="invite-code">—</p>
+
+        <div class="cta-row">
+          <a class="btn primary" id="open-app" href="#">Open in Kincore</a>
+          <button type="button" class="btn soft" id="copy-code">Copy code</button>
+        </div>
+
+        <p class="fine" id="status-line">
+          Don’t have the app? Install Kincore, sign in, then use <strong>Join via link</strong> and paste this code.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var pathMatch = window.location.pathname.match(/\/join\/([^/?#]+)/i);
+        var code = (params.get("code") || (pathMatch && pathMatch[1]) || "")
+          .trim()
+          .toUpperCase();
+
+        var codeEl = document.getElementById("invite-code");
+        var openApp = document.getElementById("open-app");
+        var copyBtn = document.getElementById("copy-code");
+        var title = document.getElementById("join-title");
+        var lede = document.getElementById("join-lede");
+
+        if (!code || code === "JOIN.HTML") {
+          codeEl.textContent = "No code in this link";
+          title.textContent = "Invite link incomplete";
+          lede.textContent = "Ask your family admin to resend a full invite link or QR code.";
+          openApp.setAttribute("aria-disabled", "true");
+          openApp.href = "/";
+          openApp.textContent = "Back to Kincore";
+          return;
+        }
+
+        codeEl.textContent = code;
+        var deep = "kincore://join/" + encodeURIComponent(code);
+        openApp.href = deep;
+
+        // Attempt auto-open on mobile; user can still tap the button.
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.setTimeout(function () {
+            window.location.href = deep;
+          }, 400);
+        }
+
+        copyBtn.addEventListener("click", function () {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(code).then(function () {
+              copyBtn.textContent = "Copied";
+              window.setTimeout(function () {
+                copyBtn.textContent = "Copy code";
+              }, 1600);
+            });
+          } else {
+            var ta = document.createElement("textarea");
+            ta.value = code;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            copyBtn.textContent = "Copied";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

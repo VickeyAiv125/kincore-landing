@@ -8,7 +8,16 @@ Public family-tree landing page for `uat.kincore.com`.
 cd landing
 python3 -m http.server 8080
 # open http://localhost:8080
+# invite page: http://localhost:8080/join.html?code=FAM-DEMO
 ```
+
+## Family invite page
+
+- File: `join.html` (+ `join.css`)
+- Share URL shape: `https://uat.kincore.com/join/{CODE}`
+- Opens `kincore://join/{CODE}` for the mobile app
+
+Nginx needs the rewrite in [`deploy/nginx-join-snippet.conf`](deploy/nginx-join-snippet.conf) so `/join/CODE` serves `join.html`.
 
 ## Auto-deploy (UAT)
 
