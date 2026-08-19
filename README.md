@@ -1,6 +1,18 @@
 # Kincore Landing
 
-Public family-tree landing page for `uat.kincore.com`.
+Public family-tree landing page for **uat.kincore.com**.
+
+## UAT domains
+
+| Service | URL | Server path |
+|---------|-----|-------------|
+| Landing | https://uat.kincore.com | `/var/www/uat.kincore.com` |
+| Admin | https://uat-admin.kincore.com | `/var/www/uat-admin.kincore.com` |
+| API | https://uat-api.kincore.com | PM2 `kincore-api` on `:5000` |
+
+DNS: point all three **A records** to `43.160.219.229`.
+
+Server one-time setup: `bash landing/deploy/setup-uat-domains.sh` on the VPS.
 
 ## Local preview
 

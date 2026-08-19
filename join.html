@@ -75,7 +75,7 @@
 
     <script>
       (function () {
-        var API = "https://uat.api.kincore.com";
+        var API = "https://uat-api.kincore.com";
         var params = new URLSearchParams(window.location.search);
         var pathMatch = window.location.pathname.match(/\/join\/([^/?#]+)/i);
         var code = (params.get("code") || (pathMatch && pathMatch[1]) || "")

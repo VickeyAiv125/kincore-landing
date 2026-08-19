@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none" role="img" aria-label="Family gathered under a tree">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff1e8"/>
+      <stop offset="100%" stop-color="#fff9f1"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e86a2e"/>
+      <stop offset="100%" stop-color="#d14b15"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="520" rx="32" fill="url(#sky)"/>
+  <ellipse cx="320" cy="430" rx="280" ry="70" fill="#f5e6d8" opacity=".7"/>
+  <path d="M320 80 C260 180 220 250 220 330 C220 390 260 420 320 420 C380 420 420 390 420 330 C420 250 380 180 320 80Z" fill="url(#hill)"/>
+  <circle cx="320" cy="150" r="95" fill="#d14b15" opacity=".28"/>
+  <circle cx="250" cy="210" r="62" fill="#e86a2e" opacity=".38"/>
+  <circle cx="390" cy="205" r="68" fill="#e86a2e" opacity=".38"/>
+  <circle cx="320" cy="120" r="55" fill="#f0a574" opacity=".5"/>
+  <g transform="translate(170 300)">
+    <circle cx="50" cy="40" r="22" fill="#f4c9a8"/>
+    <rect x="30" y="62" width="40" height="58" rx="18" fill="#d14b15"/>
+    <circle cx="130" cy="35" r="24" fill="#f0bea0"/>
+    <rect x="108" y="58" width="44" height="62" rx="20" fill="#5b7ea8"/>
+    <circle cx="210" cy="42" r="20" fill="#f4c9a8"/>
+    <rect x="192" y="62" width="36" height="54" rx="16" fill="#d46b8a"/>
+    <circle cx="285" cy="48" r="18" fill="#f0bea0"/>
+    <rect x="270" y="66" width="30" height="48" rx="14" fill="#7a6b58"/>
+  </g>
+  <path d="M120 120 Q160 90 200 110" stroke="#f5e6c8" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <path d="M440 100 Q480 80 520 95" stroke="#f5e6c8" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>
