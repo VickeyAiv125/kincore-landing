@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Sign Up — Kincore</title>
+    <meta
+      name="description"
+      content="Log in or create a Kincore family account. The admin portal is for business owners only."
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/login.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="login-page">
+    <div class="sky" aria-hidden="true"></div>
+
+    <header class="top">
+      <a class="brand" href="/">
+        <img src="/logo.png?v=2" width="44" height="44" alt="" class="brand-logo" />
+        <span>Kincore</span>
+      </a>
+      <div class="top-actions">
+        <button type="button" class="btn ghost sm" data-theme-toggle aria-pressed="false" aria-label="Theme: System">System</button>
+      </div>
+    </header>
+
+    <main class="login-shell">
+      <section class="login-brand">
+        <h1 id="brand-title">Kincore</h1>
+        <p id="brand-tagline">Preserve your family story and connect every generation.</p>
+        <img class="login-art" src="/hero-family.svg" alt="" />
+      </section>
+
+      <section>
+        <form class="login-card" id="auth-form">
+          <h2 id="card-title">Log In</h2>
+          <div class="signup-fields">
+            <label id="label-first" for="first-name">First Name</label>
+            <input id="first-name" name="first_name" autocomplete="given-name" />
+            <label id="label-last" for="last-name">Last Name</label>
+            <input id="last-name" name="last_name" autocomplete="family-name" />
+          </div>
+          <label id="label-email" for="email">Email Address</label>
+          <input id="email" name="email" type="email" required autocomplete="username" />
+          <label id="label-password" for="password">Password</label>
+          <input id="password" name="password" type="password" required minlength="6" autocomplete="current-password" />
+          <button type="submit" class="btn primary block" id="submit-btn">Log In</button>
+          <a class="ghost-link login-only" href="#" id="forgot-btn">Forgotten Password?</a>
+          <p class="login-status" id="auth-status" role="status"></p>
+          <hr class="login-rule" />
+          <button type="button" class="btn primary block" id="switch-mode">New To Kincore? Create An Account</button>
+          <p class="fine" id="or-label" style="text-align:center;margin:0.85rem 0 0.4rem">Or continue with</p>
+          <div class="social-row">
+            <button type="button" class="btn social" id="google-btn">Continue With Google</button>
+            <button type="button" class="btn social" id="facebook-btn">Continue With Facebook</button>
+          </div>
+        </form>
+        <p class="login-aside" id="create-hint">Create a family space for your relatives.</p>
+      </section>
+    </main>
+
+    <div class="login-langs" role="navigation" aria-label="Language">
+      <button type="button" data-lang="en">English (US)</button>
+      <button type="button" data-lang="zh">中文(简体)</button>
+      <button type="button" data-lang="ms">Bahasa Melayu</button>
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="es">Español</button>
+    </div>
+
+    <footer class="site-foot">
+      <nav class="foot-links" aria-label="Site">
+        <a href="/">Home</a>
+        <a href="/help.html">Help/FAQ</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms Of Service</a>
+        <a href="https://uat-admin.kincore.com/">Business Owners</a>
+      </nav>
+      <p class="fine">Family Login/Sign Up is separate from the admin portal for business owners.</p>
+    </footer>
+    <script src="/login.js"></script>
+  </body>
+</html>
