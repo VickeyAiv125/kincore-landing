@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join family — Kincore</title>
+    <title>Join Family — Kincore</title>
     <meta name="description" content="Join a Kincore family with your details — no prior login required." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -15,22 +15,23 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/join.css" />
+    <script src="/theme.js"></script>
   </head>
   <body class="join-page">
     <div class="sky" aria-hidden="true"></div>
 
     <main class="join-stage">
       <a class="brand" href="/">
-        <img src="/favicon.png" width="48" height="48" alt="" />
+        <img src="/logo.png" width="48" height="48" alt="" class="brand-logo" />
         <span>Kincore</span>
       </a>
 
       <section class="join-card">
-        <p class="eyebrow">Family invite</p>
-        <h1 id="join-title">Join this family</h1>
+        <p class="eyebrow">Family Invite</p>
+        <h1 id="join-title">Join This Family</h1>
         <p class="lede" id="join-lede">Enter your details below. No separate login step.</p>
 
-        <p class="code-label">Invite code</p>
+        <p class="code-label">Invite Code</p>
         <p class="code-value" id="invite-code">—</p>
         <div id="qr-wrap" class="qr-wrap" hidden>
           <img id="qr-img" alt="Invite QR code" width="180" height="180" />
@@ -38,11 +39,11 @@
 
         <form id="join-form" class="join-form" hidden>
           <label>
-            First name
+            First Name
             <input name="first_name" required autocomplete="given-name" />
           </label>
           <label>
-            Last name
+            Last Name
             <input name="last_name" required autocomplete="family-name" />
           </label>
           <label>
@@ -54,7 +55,7 @@
             <input name="password" type="password" required minlength="6" autocomplete="new-password" />
           </label>
           <label>
-            Gender (optional)
+            Gender (Optional)
             <select name="gender">
               <option value="">—</option>
               <option value="female">Female</option>
@@ -62,13 +63,13 @@
               <option value="other">Other</option>
             </select>
           </label>
-          <button type="submit" class="btn primary" id="submit-btn">Join family</button>
+          <button type="submit" class="btn primary" id="submit-btn">Join Family</button>
           <p class="fine" id="form-status" role="status"></p>
         </form>
 
         <div class="cta-row" id="fallback-actions">
-          <a class="btn soft" id="open-app" href="#">Open in Kincore app</a>
-          <button type="button" class="btn soft" id="copy-code">Copy code</button>
+          <a class="btn soft" id="open-app" href="#">Open In Kincore App</a>
+          <button type="button" class="btn soft" id="copy-code">Copy Code</button>
         </div>
       </section>
     </main>
@@ -94,10 +95,10 @@
 
         if (!code) {
           codeEl.textContent = "No code in this link";
-          title.textContent = "Invite link incomplete";
+          title.textContent = "Invite Link Incomplete";
           lede.textContent = "Ask your family admin to resend a full invite link or QR code.";
           openApp.href = "/";
-          openApp.textContent = "Back to Kincore";
+          openApp.textContent = "Back To Kincore";
           return;
         }
 
@@ -112,7 +113,7 @@
           })
           .then(function (res) {
             if (!res.ok) {
-              title.textContent = "Invite not found";
+              title.textContent = "Invite Not Found";
               lede.textContent = res.d.error || "This invite code is invalid or expired.";
               return;
             }
@@ -135,7 +136,7 @@
             navigator.clipboard.writeText(code).then(function () {
               copyBtn.textContent = "Copied";
               setTimeout(function () {
-                copyBtn.textContent = "Copy code";
+                copyBtn.textContent = "Copy Code";
               }, 1600);
             });
           }

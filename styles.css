@@ -84,8 +84,17 @@ h1, h2, h3 {
 }
 
 .brand-logo {
+  display: block;
   object-fit: contain;
   background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+.brand .brand-logo {
+  width: 44px;
+  height: 44px;
 }
 
 .nav {
@@ -325,24 +334,83 @@ h2 {
 
 .pillar h3, .feature-card h3 { margin-top: 0; color: var(--primary); }
 
-.steps {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
+.how-steps {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.35rem;
+  margin: 0 0 2rem;
 }
 
-.steps li {
+.how-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 1.25rem;
-  padding: 1.25rem 1.5rem;
+  padding: 1.35rem 1.35rem 1.45rem;
   box-shadow: var(--shadow);
 }
 
-.steps strong { display: block; font-size: 1.05rem; margin-bottom: 0.35rem; }
-.steps span { color: var(--muted); font-size: 0.98rem; }
+.how-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2.15rem;
+  right: -1.1rem;
+  width: 0.85rem;
+  height: 1px;
+  background: var(--line);
+}
+
+.how-card:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 2.02rem;
+  right: -1.22rem;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+
+.how-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--leaf-soft) 70%, var(--surface));
+}
+
+.how-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.how-num {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.how-card h3 {
+  margin: 0.3rem 0 0.45rem;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.how-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 
 .trust-grid div {
   padding: 1.25rem;
@@ -380,14 +448,25 @@ h2 {
   color: var(--ink);
 }
 
+.foot-brand .brand-logo {
+  width: 36px;
+  height: 36px;
+}
+
 .foot-links {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin: 1.25rem 0;
+  gap: 0.7rem 1.1rem;
+  margin: 1.25rem 0 0.4rem;
   font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.foot-links-secondary {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
   font-weight: 600;
 }
 
@@ -408,6 +487,58 @@ h2 {
 .legal-page h1 { margin-top: 0; }
 .legal-page h2 { font-size: 1.35rem; margin-top: 2rem; }
 
+.faq-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.faq-list details {
+  background: color-mix(in srgb, var(--paper) 70%, var(--surface));
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.faq-list details p {
+  margin: 0.7rem 0 0.2rem;
+  color: var(--muted);
+}
+
+.enquiry-form, .contact-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.enquiry-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.enquiry-form input,
+.enquiry-form textarea,
+.enquiry-form select {
+  font: inherit;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.enquiry-form textarea { min-height: 8rem; resize: vertical; }
+
+.contact-details a { color: var(--primary); font-weight: 700; }
+
 @media (max-width: 1100px) {
   .feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -418,6 +549,9 @@ h2 {
   .hero, .split { grid-template-columns: 1fr; }
   .nav { display: none; }
   .top { justify-content: center; }
+  .how-steps { grid-template-columns: 1fr; }
+  .how-card:not(:last-child)::before,
+  .how-card:not(:last-child)::after { display: none; }
 }
 
 @media (max-width: 560px) {

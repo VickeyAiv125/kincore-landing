@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accessibility — Kincore</title>
+    <title>Contact — Kincore</title>
+    <meta name="description" content="Contact the Kincore team for product questions, family support, or partnership enquiries." />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="stylesheet" href="/styles.css" />
@@ -26,14 +27,26 @@
         <a class="btn primary sm" href="https://uat-app.kincore.com/">Login/Sign Up</a>
       </div>
     </header>
+
     <main class="legal-page">
-      <h1>Accessibility Statement</h1>
-      <p>Kincore is committed to making our website and applications usable for people with diverse abilities.</p>
-      <h2>Our Approach</h2>
-      <p>We aim for readable typography, sufficient color contrast, keyboard navigation, and descriptive labels on forms and controls.</p>
-      <h2>Feedback</h2>
-      <p>If you encounter a barrier, contact <a href="mailto:accessibility@kincore.com">accessibility@kincore.com</a> and we will work to address it.</p>
+      <p class="eyebrow">Contact</p>
+      <h1>We Would Like To Hear From You</h1>
+      <div class="contact-details">
+        <p>General: <a href="mailto:hello@kincore.com">hello@kincore.com</a></p>
+        <p>Privacy: <a href="mailto:privacy@kincore.com">privacy@kincore.com</a></p>
+        <p>Legal: <a href="mailto:legal@kincore.com">legal@kincore.com</a></p>
+      </div>
+
+      <h2>Send A Message</h2>
+      <form class="enquiry-form" id="contact-form">
+        <label>Full Name <input name="name" required autocomplete="name" /></label>
+        <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+        <label>Message <textarea name="message" required></textarea></label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p class="fine" id="contact-status" role="status"></p>
+      </form>
     </main>
+
     <footer class="site-foot">
       <div class="foot-brand">
         <img src="/logo.png" width="36" height="36" alt="" class="brand-logo" />
@@ -53,5 +66,14 @@
       </nav>
       <p class="fine">&copy; Kincore. All rights reserved.</p>
     </footer>
+    <script>
+      document.getElementById("contact-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
+        document.getElementById("contact-status").textContent = "Opening your email app…";
+        window.location.href = `mailto:hello@kincore.com?subject=${encodeURIComponent("Kincore Contact")}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
   </body>
 </html>

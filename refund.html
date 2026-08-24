@@ -7,20 +7,51 @@
     <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="stylesheet" href="/styles.css" />
-    <script src="/theme.js" defer></script>
+    <script src="/theme.js"></script>
   </head>
   <body>
+    <div class="sky" aria-hidden="true"></div>
     <header class="top">
-      <a class="brand" href="/"><img src="/logo.png" width="44" height="44" alt="" class="brand-logo" /><span>Kincore</span></a>
-      <a class="btn ghost sm" href="/">Back to home</a>
+      <a class="brand" href="/">
+        <img src="/logo.png" width="44" height="44" alt="" class="brand-logo" />
+        <span>Kincore</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#features">Features</a>
+        <a href="/#how">How It Works</a>
+        <a href="/#privacy">Privacy</a>
+      </nav>
+      <div class="top-actions">
+        <button type="button" class="btn ghost sm" data-theme-toggle aria-pressed="false" aria-label="Theme: System">System</button>
+        <a class="btn primary sm" href="https://uat-app.kincore.com/">Login/Sign Up</a>
+      </div>
     </header>
     <main class="legal-page">
       <h1>Refund Policy</h1>
       <p>If you purchased a paid Kincore plan, refund requests may be submitted within 14 days of purchase unless otherwise stated in your order confirmation.</p>
-      <h2>Eligible charges</h2>
+      <h2>Eligible Charges</h2>
       <p>Subscription fees billed in error or for unused annual plans may qualify after review.</p>
-      <h2>How to request</h2>
+      <h2>How To Request</h2>
       <p>Email <a href="mailto:billing@kincore.com">billing@kincore.com</a> with your account email and transaction reference.</p>
     </main>
+    <footer class="site-foot">
+      <div class="foot-brand">
+        <img src="/logo.png" width="36" height="36" alt="" class="brand-logo" />
+        <strong>Kincore</strong>
+      </div>
+      <p>Every Story Has A Roots</p>
+      <nav class="foot-links" aria-label="Site">
+        <a href="/about.html">About</a>
+        <a href="/help.html">Help/FAQ</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms Of Service</a>
+      </nav>
+      <nav class="foot-links foot-links-secondary" aria-label="Legal Extra">
+        <a href="/refund.html">Refund Policy</a>
+        <a href="/accessibility.html">Accessibility</a>
+      </nav>
+      <p class="fine">&copy; Kincore. All rights reserved.</p>
+    </footer>
   </body>
 </html>
