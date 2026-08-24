@@ -84,6 +84,7 @@ h1, h2, h3 {
 }
 
 .brand-logo {
+  display: block;
   object-fit: contain;
   background: transparent;
 }
