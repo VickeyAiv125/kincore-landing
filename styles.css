@@ -116,6 +116,57 @@ h1, h2, h3 {
   align-items: center;
 }
 
+.menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menu-btn-bars,
+.menu-btn-bars::before,
+.menu-btn-bars::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  position: relative;
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.menu-btn-bars::before,
+.menu-btn-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu-btn-bars::before { top: -6px; }
+.menu-btn-bars::after { top: 6px; }
+
+.top.is-open .menu-btn-bars {
+  background: transparent;
+}
+
+.top.is-open .menu-btn-bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.top.is-open .menu-btn-bars::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -609,15 +660,40 @@ h2 {
 
 @media (max-width: 900px) {
   .hero, .split { grid-template-columns: 1fr; }
-  .nav { display: none; }
-  .top { justify-content: center; }
+  .top {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu-btn { display: inline-flex; margin-left: 0.5rem; }
+  .brand { margin-right: auto; }
+  .nav,
+  .top-actions {
+    display: none;
+    width: 100%;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.35rem 0 0.5rem;
+  }
+  .nav a {
+    padding: 0.8rem 0.15rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .top.is-open .nav,
+  .top.is-open .top-actions {
+    display: flex;
+  }
+  .top.is-open .top-actions {
+    padding: 0.85rem 0 0.35rem;
+    justify-content: flex-start;
+  }
   .how-steps { grid-template-columns: 1fr; }
   .how-card:not(:last-child)::before,
   .how-card:not(:last-child)::after { display: none; }
 }
 
 @media (max-width: 560px) {
-  .top-actions { width: 100%; justify-content: center; }
   body { font-size: 1rem; }
   .feature-grid { grid-template-columns: 1fr; }
 
