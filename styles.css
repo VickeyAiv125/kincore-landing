@@ -84,12 +84,8 @@ h1, h2, h3 {
 }
 
 .brand-logo {
-  display: block;
   object-fit: contain;
   background: transparent;
-  border: 0;
-  box-shadow: none;
-  border-radius: 50%;
 }
 
 .brand .brand-logo {
