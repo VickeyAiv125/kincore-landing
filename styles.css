@@ -301,9 +301,51 @@ h1, h2, h3 {
 
 .hero-album {
   position: relative;
-  min-height: 420px;
+  min-height: 460px;
   display: grid;
   place-items: center;
+}
+
+.hero-reunion {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+.hero-reunion img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.hero-reunion figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.2rem 1.25rem 1.3rem;
+  background: linear-gradient(180deg, transparent, rgba(26, 28, 46, 0.78));
+  color: #fff;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.hero-reunion strong {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.hero-reunion span {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  max-width: 28rem;
+  line-height: 1.45;
 }
 
 .polaroid {
@@ -311,7 +353,7 @@ h1, h2, h3 {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 0.85rem;
-  padding: 0.7rem 0.7rem 1.9rem;
+  padding: 0.55rem 0.55rem 1.45rem;
   box-shadow: var(--shadow);
 }
 
@@ -326,17 +368,20 @@ h1, h2, h3 {
 }
 
 .polaroid figcaption {
-  margin-top: 0.7rem;
+  margin-top: 0.55rem;
   font-family: Fraunces, Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   text-align: center;
   color: var(--ink);
 }
 
 .polaroid-main {
-  width: min(100%, 360px);
-  transform: rotate(-2deg);
-  z-index: 1;
+  position: absolute;
+  width: min(42%, 168px);
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 2;
 }
 
 .polaroid-main img {
@@ -346,19 +391,19 @@ h1, h2, h3 {
 .polaroid-a,
 .polaroid-b {
   position: absolute;
-  width: min(42%, 180px);
+  width: min(34%, 132px);
   z-index: 2;
 }
 
 .polaroid-a {
-  left: 0;
-  top: 8%;
+  left: 3%;
+  top: 6%;
   transform: rotate(-8deg);
 }
 
 .polaroid-b {
-  right: 0;
-  bottom: 4%;
+  right: 3%;
+  top: 14%;
   transform: rotate(7deg);
 }
 
@@ -475,48 +520,6 @@ h1, h2, h3 {
   font-family: Fraunces, Georgia, serif;
   color: var(--ink);
   text-align: center;
-}
-
-.moment {
-  padding: clamp(2rem, 5vw, 3.5rem) 0;
-}
-
-.moment-frame {
-  margin: 0;
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.75rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
-}
-
-.moment-frame img {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.moment-frame figcaption {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 1.4rem 1.5rem 1.5rem;
-  background: linear-gradient(180deg, transparent, rgba(26, 28, 46, 0.78));
-  color: #fff;
-  display: grid;
-  gap: 0.3rem;
-}
-
-.moment-frame strong {
-  font-family: Fraunces, Georgia, serif;
-  font-size: 1.35rem;
-}
-
-.moment-frame span {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.98rem;
-  max-width: 40rem;
 }
 
 h2 {
@@ -836,6 +839,194 @@ h2 {
 .legal-page h1 { margin-top: 0; }
 .legal-page h2 { font-size: 1.35rem; margin-top: 2rem; }
 
+.legal-hub {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: 2rem auto 4rem;
+}
+
+.legal-hub-intro {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 40rem;
+}
+
+.legal-hub-intro h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.legal-hub-intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.legal-shell {
+  display: grid;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-height: 28rem;
+}
+
+.legal-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem 0.85rem;
+  background: color-mix(in srgb, var(--leaf-soft) 55%, var(--surface));
+  border-right: 1px solid var(--line);
+}
+
+.legal-nav-label {
+  margin: 0 0.65rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.legal-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.85rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 650;
+  font-size: 0.95rem;
+  border-left: 3px solid transparent;
+}
+
+.legal-nav-link:hover {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.legal-nav-link.is-active {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+.legal-nav-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+.legal-panels {
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.legal-panel {
+  outline: none;
+}
+
+.legal-panel[hidden] {
+  display: none !important;
+}
+
+.legal-panel h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+}
+
+.legal-panel h3 {
+  margin: 1.6rem 0 0.55rem;
+  font-size: 1.12rem;
+}
+
+.legal-panel p {
+  color: var(--muted);
+}
+
+.legal-updated {
+  margin: 0 0 1.1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.legal-callout {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--line));
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.legal-panel ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.legal-panel li {
+  margin: 0.35rem 0;
+}
+
+.legal-contact-note {
+  margin-top: 1.1rem;
+  max-width: 28rem;
+}
+
+.legal-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+  margin-top: 0.5rem;
+}
+
+.legal-contact-col h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 820px) {
+  .legal-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-nav {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0.85rem;
+  }
+
+  .legal-nav-label {
+    width: 100%;
+    margin: 0 0.25rem 0.35rem;
+  }
+
+  .legal-nav-link {
+    border-left: 0;
+    border-bottom: 3px solid transparent;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .legal-nav-link.is-active {
+    border-left-color: transparent;
+    border-bottom-color: var(--primary);
+  }
+}
+
 /* About / product mockup showcase (Dribbble-style stage) */
 .about-showcase {
   padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 2.5rem);
@@ -922,9 +1113,9 @@ h2 {
 }
 
 .about-story {
-  width: min(760px, 100%);
+  width: min(1080px, 100%);
   margin: 0 auto 4rem;
-  padding: 2rem clamp(1rem, 3vw, 2rem);
+  padding: 2rem 0;
 }
 
 .about-story h2 {
@@ -1008,12 +1199,18 @@ h2 {
 @media (max-width: 900px) {
   .hero, .split, .lineage-layout { grid-template-columns: 1fr; }
   .hero-album {
-    min-height: 360px;
+    min-height: 380px;
     margin-top: 0.5rem;
   }
-  .polaroid-main { width: min(100%, 300px); }
+  .hero-reunion img {
+    aspect-ratio: 5 / 4;
+  }
+  .polaroid-main {
+    width: min(40%, 150px);
+    bottom: 20%;
+  }
   .polaroid-a,
-  .polaroid-b { width: min(38%, 150px); }
+  .polaroid-b { width: min(32%, 118px); }
   .top {
     justify-content: space-between;
     align-items: center;

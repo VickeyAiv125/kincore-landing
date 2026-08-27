@@ -69,12 +69,15 @@
         <label>Email <input name="email" type="email" required autocomplete="email" /></label>
         <label>
           Topic
-          <select name="topic">
-            <option>Account</option>
-            <option>Family Tree</option>
-            <option>Invites</option>
-            <option>Privacy</option>
-            <option>Other</option>
+          <select name="topic" required>
+            <option value="">Select a topic</option>
+            <option>General enquiry</option>
+            <option>Account support</option>
+            <option>Privacy or data request</option>
+            <option>Billing or refund</option>
+            <option>Accessibility feedback</option>
+            <option>Legal enquiry</option>
+            <option>Report content or misuse</option>
           </select>
         </label>
         <label>Message <textarea name="message" required></textarea></label>
@@ -88,17 +91,15 @@
         <img src="/logo.png?v=2" width="36" height="36" alt="" class="brand-logo" />
         <strong>Kincore</strong>
       </div>
-      <p>Every Story Has A Roots</p>
+      <p>Every Story Has Roots</p>
       <nav class="foot-links" aria-label="Site">
         <a href="/about.html">About</a>
         <a href="/help.html">Help/FAQ</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms Of Service</a>
-      </nav>
-      <nav class="foot-links foot-links-secondary" aria-label="Legal Extra">
-        <a href="/refund.html">Refund Policy</a>
-        <a href="/accessibility.html">Accessibility</a>
+        <a href="/legal.html#contact">Contact</a>
+        <a href="/legal.html#privacy">Privacy Policy</a>
+        <a href="/legal.html#terms">Terms of Service</a>
+        <a href="/legal.html#refund">Refund Policy</a>
+        <a href="/legal.html#accessibility">Accessibility</a>
       </nav>
       <p class="fine">&copy; Kincore. All rights reserved.</p>
     </footer>
@@ -108,7 +109,7 @@
         const data = new FormData(event.currentTarget);
         const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nTopic: ${data.get("topic")}\n\n${data.get("message")}`;
         document.getElementById("enquiry-status").textContent = "Opening your email app…";
-        window.location.href = `mailto:hello@kincore.com?subject=${encodeURIComponent("Kincore Help Enquiry")}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:support@kccdigital.com?subject=${encodeURIComponent(`Kincore enquiry: ${data.get("topic") || "General enquiry"}`)}&body=${encodeURIComponent(body)}`;
       });
     </script>
   </body>

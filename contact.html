@@ -2,84 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=/legal.html#contact" />
+    <link rel="canonical" href="/legal.html#contact" />
     <title>Contact — Kincore</title>
-    <meta name="description" content="Contact the Kincore team for product questions, family support, or partnership enquiries." />
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="/theme.js"></script>
-    <script src="/nav.js"></script>
+    <script>location.replace("/legal.html#contact");</script>
   </head>
   <body>
-    <div class="sky" aria-hidden="true"></div>
-    <header class="top">
-      <a class="brand" href="/">
-        <img src="/logo.png?v=2" width="44" height="44" alt="" class="brand-logo" />
-        <span>Kincore</span>
-      </a>
-      <button type="button" class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <span class="menu-btn-bars" aria-hidden="true"></span>
-      </button>
-      <nav class="nav" id="site-nav" aria-label="Primary">
-        <a href="/#stories">Stories</a>
-        <a href="/#lineage">Generations</a>
-        <a href="/#app">See The App</a>
-        <a href="/#how">How It Works</a>
-        <a href="/#privacy">Privacy</a>
-      </nav>
-      <div class="top-actions">
-        <button type="button" class="btn ghost sm" data-theme-toggle aria-pressed="false" aria-label="Theme: System">System</button>
-        <a class="btn primary sm" href="/login.html">Login/Sign Up</a>
-      </div>
-    </header>
-
-    <main class="legal-page">
-      <p class="eyebrow">Contact</p>
-      <h1>We Would Like To Hear From You</h1>
-      <div class="contact-details">
-        <p>General: <a href="mailto:hello@kincore.com">hello@kincore.com</a></p>
-        <p>Privacy: <a href="mailto:privacy@kincore.com">privacy@kincore.com</a></p>
-        <p>Legal: <a href="mailto:legal@kincore.com">legal@kincore.com</a></p>
-      </div>
-
-      <h2>Send A Message</h2>
-      <form class="enquiry-form" id="contact-form">
-        <label>Full Name <input name="name" required autocomplete="name" /></label>
-        <label>Email <input name="email" type="email" required autocomplete="email" /></label>
-        <label>Message <textarea name="message" required></textarea></label>
-        <button class="btn primary" type="submit">Send Message</button>
-        <p class="fine" id="contact-status" role="status"></p>
-      </form>
-    </main>
-
-    <footer class="site-foot">
-      <div class="foot-brand">
-        <img src="/logo.png?v=2" width="36" height="36" alt="" class="brand-logo" />
-        <strong>Kincore</strong>
-      </div>
-      <p>Every Story Has A Roots</p>
-      <nav class="foot-links" aria-label="Site">
-        <a href="/about.html">About</a>
-        <a href="/help.html">Help/FAQ</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms Of Service</a>
-      </nav>
-      <nav class="foot-links foot-links-secondary" aria-label="Legal Extra">
-        <a href="/refund.html">Refund Policy</a>
-        <a href="/accessibility.html">Accessibility</a>
-      </nav>
-      <p class="fine">&copy; Kincore. All rights reserved.</p>
-    </footer>
-    <script>
-      document.getElementById("contact-form").addEventListener("submit", (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
-        document.getElementById("contact-status").textContent = "Opening your email app…";
-        window.location.href = `mailto:hello@kincore.com?subject=${encodeURIComponent("Kincore Contact")}&body=${encodeURIComponent(body)}`;
-      });
-    </script>
+    <p>Moved to <a href="/legal.html#contact">Legal &amp; Support — Contact</a>.</p>
   </body>
 </html>
