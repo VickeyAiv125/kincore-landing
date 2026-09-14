@@ -1,6 +1,7 @@
 (() => {
   const tabs = [...document.querySelectorAll("[data-legal-tab]")];
   const panels = [...document.querySelectorAll("[data-legal-panel]")];
+  const select = document.querySelector("[data-legal-select]");
   if (!tabs.length || !panels.length) return;
 
   const valid = new Set(tabs.map((tab) => tab.getAttribute("data-legal-tab")));
@@ -19,6 +20,10 @@
       panel.classList.toggle("is-active", active);
       panel.hidden = !active;
     });
+
+    if (select && select.value !== key) {
+      select.value = key;
+    }
 
     if (pushHash) {
       const next = `#${key}`;
@@ -40,6 +45,12 @@
     });
   });
 
+  if (select) {
+    select.addEventListener("change", () => {
+      show(select.value);
+    });
+  }
+
   window.addEventListener("hashchange", () => {
     show(location.hash.replace(/^#/, "") || "privacy", { pushHash: false });
   });
@@ -55,7 +66,7 @@
       const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nTopic: ${topic}\n\n${data.get("message")}`;
       const status = document.getElementById("contact-status");
       if (status) status.textContent = "Opening your email app…";
-      window.location.href = `mailto:support@kccdigital.com?subject=${encodeURIComponent(`Kincore enquiry: ${topic}`)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:support@kincore.com?subject=${encodeURIComponent(`Kincore enquiry: ${topic}`)}&body=${encodeURIComponent(body)}`;
     });
   }
 })();

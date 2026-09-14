@@ -34,8 +34,8 @@
         <a href="/#stories">Stories</a>
         <a href="/#lineage">Generations</a>
         <a href="/#app">See The App</a>
-        <a href="/#how">How It Works</a>
-        <a href="/#privacy">Privacy</a>
+        <a href="/how-it-works.html">How It Works</a>
+        <a href="/legal.html#privacy">Privacy</a>
       </nav>
       <div class="top-actions">
         <button type="button" class="btn ghost sm" data-theme-toggle aria-pressed="false" aria-label="Theme: System">System</button>
@@ -55,36 +55,48 @@
       <div class="legal-shell">
         <nav class="legal-nav" aria-label="Policies">
           <p class="legal-nav-label">Policies</p>
-          <a href="#privacy" class="legal-nav-link is-active" data-legal-tab="privacy">
-            <span class="legal-nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-            </span>
-            Privacy Policy
-          </a>
-          <a href="#terms" class="legal-nav-link" data-legal-tab="terms">
-            <span class="legal-nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/></svg>
-            </span>
-            Terms of Service
-          </a>
-          <a href="#refund" class="legal-nav-link" data-legal-tab="refund">
-            <span class="legal-nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.1-1.3-2-3-2s-3 .9-3 2 1.3 2 3 2 3 .9 3 2-1.3 2-3 2-3-.9-3-2"/></svg>
-            </span>
-            Refund Policy
-          </a>
-          <a href="#accessibility" class="legal-nav-link" data-legal-tab="accessibility">
-            <span class="legal-nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 8v4m0 0 4 7M12 12l-4 7M7 12h10"/></svg>
-            </span>
-            Accessibility
-          </a>
-          <a href="#contact" class="legal-nav-link" data-legal-tab="contact">
-            <span class="legal-nav-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg>
-            </span>
-            Contact &amp; Support
-          </a>
+          <label class="legal-nav-select-wrap">
+            <span class="legal-nav-select-label">Jump to</span>
+            <select class="legal-nav-select" data-legal-select aria-label="Select a policy">
+              <option value="privacy">Privacy Policy</option>
+              <option value="terms">Terms of Service</option>
+              <option value="refund">Refund Policy</option>
+              <option value="accessibility">Accessibility</option>
+              <option value="contact">Contact &amp; Support</option>
+            </select>
+          </label>
+          <div class="legal-nav-links">
+            <a href="#privacy" class="legal-nav-link is-active" data-legal-tab="privacy">
+              <span class="legal-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+              </span>
+              Privacy Policy
+            </a>
+            <a href="#terms" class="legal-nav-link" data-legal-tab="terms">
+              <span class="legal-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/></svg>
+              </span>
+              Terms of Service
+            </a>
+            <a href="#refund" class="legal-nav-link" data-legal-tab="refund">
+              <span class="legal-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.1-1.3-2-3-2s-3 .9-3 2 1.3 2 3 2 3 .9 3 2-1.3 2-3 2-3-.9-3-2"/></svg>
+              </span>
+              Refund Policy
+            </a>
+            <a href="#accessibility" class="legal-nav-link" data-legal-tab="accessibility">
+              <span class="legal-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 8v4m0 0 4 7M12 12l-4 7M7 12h10"/></svg>
+              </span>
+              Accessibility
+            </a>
+            <a href="#contact" class="legal-nav-link" data-legal-tab="contact">
+              <span class="legal-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg>
+              </span>
+              Contact &amp; Support
+            </a>
+          </div>
         </nav>
 
         <div class="legal-panels">
@@ -214,7 +226,7 @@
               delete, or export personal information, or to object to or restrict
               certain processing. You can update many details in-product. For privacy
               requests, contact
-              <a href="mailto:privacy@kincore.com">privacy@kincore.com</a>.
+              <a href="mailto:support@kccdigital.com">support@kccdigital.com</a>.
               We may need to verify your identity before fulfilling a request.
             </p>
 
@@ -234,8 +246,6 @@
 
             <h3>Contact</h3>
             <p>
-              Privacy questions:
-              <a href="mailto:privacy@kincore.com">privacy@kincore.com</a><br />
               Support:
               <a href="mailto:support@kccdigital.com">support@kccdigital.com</a>
             </p>
@@ -355,8 +365,6 @@
 
             <h3>Contact</h3>
             <p>
-              Legal:
-              <a href="mailto:legal@kincore.com">legal@kincore.com</a><br />
               Support:
               <a href="mailto:support@kccdigital.com">support@kccdigital.com</a>
             </p>
@@ -375,7 +383,7 @@
             <h3>How to Request</h3>
             <p>
               Email
-              <a href="mailto:billing@kincore.com">billing@kincore.com</a>
+              <a href="mailto:support@kincore.com">support@kincore.com</a>
               with your account email and transaction reference.
             </p>
             <aside class="legal-callout">
@@ -395,10 +403,7 @@
             </p>
             <h3>Contact</h3>
             <p>
-              Billing questions:
-              <a href="mailto:billing@kincore.com">billing@kincore.com</a><br />
-              General support:
-              <a href="mailto:support@kccdigital.com">support@kccdigital.com</a>
+              <a href="mailto:support@kincore.com">support@kincore.com</a>
             </p>
           </article>
 
@@ -417,7 +422,7 @@
             <h3>Feedback</h3>
             <p>
               If you encounter a barrier, contact
-              <a href="mailto:support@kccdigital.com">support@kccdigital.com</a>
+              <a href="mailto:support@kincore.com">support@kincore.com</a>
               with the topic “Accessibility feedback” and we will work to address it.
             </p>
           </article>
@@ -434,10 +439,7 @@
               <div class="legal-contact-col">
                 <h3>We Would Like To Hear From You</h3>
                 <div class="contact-details">
-                  <p>Email: <a href="mailto:support@kccdigital.com">support@kccdigital.com</a></p>
-                  <p>General: <a href="mailto:hello@kincore.com">hello@kincore.com</a></p>
-                  <p>Privacy: <a href="mailto:privacy@kincore.com">privacy@kincore.com</a></p>
-                  <p>Legal: <a href="mailto:legal@kincore.com">legal@kincore.com</a></p>
+                  <p>Email: <a href="mailto:support@kincore.com">support@kincore.com</a></p>
                 </div>
                 <p class="fine legal-contact-note">
                   All form submissions can still arrive in the same mailbox, while
@@ -481,6 +483,7 @@
       <p>Every Story Has Roots</p>
       <nav class="foot-links" aria-label="Site">
         <a href="/about.html">About</a>
+        <a href="/how-it-works.html">How It Works</a>
         <a href="/help.html">Help/FAQ</a>
         <a href="/legal.html#contact">Contact</a>
         <a href="/legal.html#privacy">Privacy Policy</a>
